@@ -39,10 +39,31 @@ class WxApp:
         api_url = self.API_BASE_URI + api_path
 
         if 'access_token' in params and params['access_token'] == ACCESS_TOKEN:
-            access_token = get_access_token(self)
-            params['access_token'] = access_token
+            try:
+                access_token = get_access_token(self)
+                params['access_token'] = access_token
+            except Exception as err:
+                return {
+                    'errcode': -1,
+                    'errmsg': str(err)
+                }
 
-        print('params', params)
         res = requests.get(api_url, params=params)
+
+        return res.json()
+
+    def api_post(self, api_path, params={}, data={}):
+        api_url = self.API_BASE_URI + api_path
+
+        if 'access_token' in params and params['access_token'] == ACCESS_TOKEN:
+            try:
+                access_token = get_access_token(self)
+                params['access_token'] = access_token
+            except Exception as err:
+                return {
+                    'errcode': -1,
+                    'errmsg': str(err)
+                }
+        res = requests.post(api_url, params=params, json=data)
 
         return res.json()
