@@ -1,6 +1,6 @@
 import requests
-from .token import get_access_token
-from .cache import DefaultCache
+from cutesdk.wxapp.token import get_access_token
+from cutesdk.wxapp.cache import DefaultCache
 
 ACCESS_TOKEN = 'access_token'
 

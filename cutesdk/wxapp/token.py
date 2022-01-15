@@ -1,7 +1,7 @@
 import hashlib
 import json
 
-from .cache import ICache, DefaultCache
+from cutesdk.wxapp.cache import ICache, DefaultCache
 
 """default handler defined how to get access_token
 
